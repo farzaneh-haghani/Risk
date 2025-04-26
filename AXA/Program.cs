@@ -1,11 +1,13 @@
-﻿namespace AXA;
+﻿using AXA_Library;
+
+namespace AXA;
 
 public static class Program
 {
     public static void Main()
     {
         var manyPolicies = Enumerable.Range(0, 10000)
-            .Select((i) => new Policy<CarCrashRisk>(new CarCrashRisk()))
+            .Select((i) => new Policy<CarCrashRisk>(new CarCrashRisk(Factory.CreateDriver("test",1999,true,2021,"London"),Factory.CreateCar("BMW",2023))))
             .ToList(); //search IList instead List
         // var myCar = new CarCrashRisk();
         // var myPolicy = new Policy<CarCrashRisk>(myCar);
